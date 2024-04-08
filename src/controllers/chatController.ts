@@ -25,8 +25,8 @@ export const chatResponse = async (req: RequestWithChatId, res: Response) => {
 
     // console.log("req : ", req.body.chatId)
     const index = pc.index("dfccchatbot");
-    const namespace = index.namespace('pinecone-gpt-test')
-    //pinecone-gpt-test
+    const namespace = index.namespace('frimi-data')
+    //frimi-data
 
     let userChatId = req.body.chatId || "";
     let language = req.body.language;
@@ -339,7 +339,7 @@ Standalone question:`
             //   });
 
             //   const ids = fileIds.map(file => file.file_id);
-            // const fetchResult = await index.namespace('pinecone-gpt-test').fetch(ids);
+            // const fetchResult = await index.namespace('frimi-data').fetch(ids);
             // const documents = Object.values(fetchResult.records).map(record => {
             //     if (record.metadata) {
             //         return record.metadata.Title;
