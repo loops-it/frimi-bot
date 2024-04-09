@@ -119,7 +119,8 @@
       line-height: 20px;
       font-family: "Poppins", sans-serif;
     }
-    .chat-submit-button:hover{
+
+    .chat-submit-button:hover {
       background-color: #ff5001;
     }
 
@@ -192,7 +193,8 @@
         padding-top: 0px;
       }
     }
-    .closeButton{
+
+    .closeButton {
       background-color: transparent;
       border: solid 1px #fff;
       border-radius: 100%;
@@ -205,6 +207,34 @@
       text-align: center;
       padding: 0px;
 
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes visible {
+      0% {
+        visibility: hidden;
+      }
+
+      100% {
+        visibility: visible;
+      }
+    }
+
+    .loading {
+      animation: fadeIn 0.5s ease-in-out infinite alternate, visible 0.5s ease-in-out infinite alternate;
     }
   </style>
 </head>
@@ -308,7 +338,7 @@
 
         // Change button icon to three dots
         const submitButton = document.querySelector('.chat-submit-button');
-        submitButton.innerHTML = '<i class="bi bi-three-dots"></i>';
+        submitButton.innerHTML = '<i class="bi bi-three-dots loading"></i>';
 
         let chatId = localStorage.getItem('chatId');
         console.log("generated chat id : ", chatId)
@@ -374,23 +404,23 @@
     });
 
     function appendLanguageMessage(content) {
-  const responseDiv = document.getElementById("response");
-  const messageDiv = document.createElement("div");
-  messageDiv.classList.add("bot-message");
+      const responseDiv = document.getElementById("response");
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("bot-message");
 
-  // Create an image element for the message
-  const image = document.createElement("img");
-  image.classList.add("message-image");
-  image.src = "/chat-header.webp"; // Replace with actual bot image URL
+      // Create an image element for the message
+      const image = document.createElement("img");
+      image.classList.add("message-image");
+      image.src = "/chat-header.webp"; // Replace with actual bot image URL
 
-  // Use innerHTML to allow HTML formatting in the message
-  messageDiv.innerHTML = `<div>${content}</div>`;
-  messageDiv.prepend(image);
+      // Use innerHTML to allow HTML formatting in the message
+      messageDiv.innerHTML = `<div>${content}</div>`;
+      messageDiv.prepend(image);
 
-  responseDiv.appendChild(messageDiv);
-  // Scroll down to the latest message
-  responseDiv.scrollTop = responseDiv.scrollHeight;
-}
+      responseDiv.appendChild(messageDiv);
+      // Scroll down to the latest message
+      responseDiv.scrollTop = responseDiv.scrollHeight;
+    }
   </script>
 </body>
 
